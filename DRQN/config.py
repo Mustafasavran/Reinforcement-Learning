@@ -11,7 +11,7 @@ import torch
 ENV_NAME = 'CartPole-v1'
 gamma = 0.99
 BATCH_SIZE = 32
-LEARNING_RATE= 0.001
+LEARNING_RATE= 0.0001
 BUFFER_SIZE = 100
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
