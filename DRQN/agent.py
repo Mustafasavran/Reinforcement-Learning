@@ -51,11 +51,11 @@ class Agent:
         states_v = torch.stack(current_states).view(cf.BATCH_SIZE, cf.l_sequence, self.net.n_input)
         next_states_v = torch.stack(next_states).view(cf.BATCH_SIZE, cf.l_sequence, self.net.n_input)
         actions_v = torch.stack(actions).view(cf.BATCH_SIZE, cf.l_sequence, -1).long()
-        rewards_v = torch.stack(rewards).view(cf.BATCH_SIZE, cf.l_sequence, -1)
-        dones_v=torch.stack(dones).view(cf.BATCH_SIZE, cf.l_sequence, -1)
+        rewards_v = torch.stack(rewards).view(cf.BATCH_SIZE, cf.l_sequence, -1).to(cf.DEVICE)
+        dones_v=torch.stack(dones).view(cf.BATCH_SIZE, cf.l_sequence, -1).to(cf.DEVICE)
         state_action_values,_ = self.net(states_v)
         
-        state_action_values=state_action_values.gather(2, actions_v)
+        state_action_values=state_action_values.gather(2, actions_v.to(cf.DEVICE))
         next_state_values,_ = self.tgt_net(next_states_v)
         next_state_values=next_state_values.max(2, keepdim=True)[0]
         next_state_values = next_state_values.detach()
