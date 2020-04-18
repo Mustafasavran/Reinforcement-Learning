@@ -14,8 +14,8 @@ class Agent:
         self.env=env
         self.epsilon=1.0
         self.epsilon_decay=0
-        self.net=DRQN(n_input,n_output).to("cpu")
-        self.tgt_net=DRQN(n_input,n_output).to("cpu")
+        self.net=DRQN(n_input,n_output).to(cf.DEVICE)
+        self.tgt_net=DRQN(n_input,n_output).to(cf.DEVICE)
         self.optimizer = torch.optim.Adam(self.net.parameters(), lr=cf.LEARNING_RATE)
         
     def action(self,state, hidden):
