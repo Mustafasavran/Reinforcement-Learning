@@ -34,8 +34,8 @@ class Agent:
     def update_epsilon(self):
         
         if self.epsilon_decay>1000:
-            self.epsilon_decay=0
-            self.epsilon=max(self.epsilon-1e-4,0.02)
+            
+            self.epsilon=max(self.epsilon-0.00005,0.02)
             
             
             
