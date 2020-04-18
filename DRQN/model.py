@@ -7,7 +7,7 @@ Created on Sat Apr 11 11:19:15 2020
 
   
 import torch.nn as nn
-
+import config as cf
 class DRQN(nn.Module):
     def __init__(self,n_input,n_output):
         super(DRQN, self).__init__()
@@ -24,7 +24,7 @@ class DRQN(nn.Module):
             )
     
     def forward(self,x,h=None):
-        
+        x=x.to(cf.DEVICE)
         if h==None:
             o, h = self.lstm(x)
         
