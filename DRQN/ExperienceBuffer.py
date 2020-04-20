@@ -27,7 +27,7 @@ class ExperienceReplay:
                     self.episode_buffer.insert(0, Exp(torch.zeros_like(current_state),0,0,torch.zeros_like(next_state),0))
         
             self.buffer.append(self.episode_buffer)
-            self.episodde_buffer=[]
+            self.episode_buffer=[]
     
     def sample(self,size):
         
