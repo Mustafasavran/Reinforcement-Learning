@@ -39,7 +39,10 @@ class ExperienceReplay:
         indices = np.random.choice(len(self.buffer), size, replace=False)
         for index in indices:
             episode=self.buffer[index]
-            start_episode=np.random.choice(range(len(episode)-l_sequence),1,replace=False)[0]
+            if len(episode)!=l_sequence:
+              start_episode=np.random.choice(range(len(episode)-l_sequence),1,replace=False)[0]
+            else:
+              start_episode=0
             
             experiences=episode[start_episode:start_episode+l_sequence]
             
