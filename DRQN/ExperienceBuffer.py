@@ -23,7 +23,7 @@ class ExperienceReplay:
         
         
         if  done==0:
-            while len(self.episode_buffer) < l_sequence:# If Episode is not finish
+            while len(self.episode_buffer) < l_sequence:
                     self.episode_buffer.insert(0, Exp(torch.zeros_like(current_state),0,0,torch.zeros_like(next_state),0))
         
             self.buffer.append(self.episode_buffer)
